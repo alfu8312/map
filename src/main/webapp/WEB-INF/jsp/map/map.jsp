@@ -10,15 +10,36 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=StvUbYWnrhaJcdl2wiwN"></script>
 </head>
 <body>
-<div id="map" style="width:100%;height:400px;"></div>
+<div id="map" style="width:500px;height:500px;"></div>
 
 <script>
 var mapOptions = {
-    center: new naver.maps.LatLng(37.557259, 127.151538),
+    center: new N.LatLng(37.557259, 127.151538),
     zoom: 10
 };
 
 var map = new naver.maps.Map('map', mapOptions);
+
+var markerOptions = {
+    position: new N.LatLng(37.557259, 127.151538),
+    map: map,
+    title: '°í·¡Èú'
+};
+var marker = new naver.maps.Marker(markerOptions);
+
+var markerListener = naver.maps.Event.addListener(marker, 'click', function() {
+    map.setZoom(11);
+    map.setCenter(marker.getPosition());
+
+    naver.maps.Event.removeListener(listener);
+});
+
+var mapElement = map.getElement();
+
+var listener = naver.maps.Event.addDOMListener(mapElement, 'click', function(e) {
+    console.log(e);
+});
+
 </script>
 </body>
 </html>
