@@ -4,10 +4,15 @@
 
 # java
 *.class
+bin/
+
 # Package Files #
 *.jar
 *.war
 *.ear
+
+#properties
+*.context.properties
 
 ### STS ###
 .apt_generated
